@@ -1,6 +1,4 @@
-// import { ship } from "./ship";
-
-export class gameboard {
+export default class Gameboard {
   constructor() {
     this.shipArray = [];
     this.numOfShipsSunk = 0;
@@ -11,32 +9,39 @@ export class gameboard {
     for (let x = 0; x < 10; x++) {
       const temp = [];
       for (let y = 0; y < 10; y++) {
-        temp.push({ ship: 0, hit: 0 });
+        temp.push(0);
       }
       this.grid.push(temp);
     }
   }
-  compareShipStates(obj1, obj2) {
-    return obj1.ship === obj2.ship && obj1.hit === obj2.hit;
-  }
-  placeShip(shipLength, xCord, yCord) {
-    // first check if all the blocks are empty
-    for (let i = 0; i < shipLength; i++) {
-      if (
-        !this.compareShipStates(this.grid[xCord + i][yCord], {
-          ship: 0,
-          hit: 0,
-        })
-      ) {
+  compareShipStates(ship, xCord, yCord, direction) {
+    let shipObj; 
+    for (let i = 0; i < ship.length; i++) {
+      if (direction == 'V') {
+        shipObj = this.grid[xCord + i][yCord];
+      } else {
+        shipObj = this.grid[xCord][yCord + i];
+      }
+
+      if (!shipObj === 0) {
         throw console.error('ship already placed');
       }
     }
-    for (let i = 0; i < shipLength; i++) {
-      this.grid[xCord + i][yCord] = { ship: newShip, hit: 0 };
+  }
+  placeShip(newShip, coord, direction = 'V') {
+    // first check if all the blocks are empty
+    const [xCord, yCord] = coord;
+    this.compareShipStates(newShip, xCord, yCord, direction);
+    for (let i = 0; i < newShip.length; i++) {
+      if (direction == 'V') {
+        this.grid[xCord + i][yCord] = newShip;
+      } else {
+        this.grid[xCord][yCord+i] = newShip;
+      }
     }
   }
 }
 
-const game = new gameboard();
-game.placeShip(3, 4, 5);
-console.log(game.grid);
+// const game = new Gameboard();
+// game.placeShip(3, 4, 5);
+// console.log(game.grid);
