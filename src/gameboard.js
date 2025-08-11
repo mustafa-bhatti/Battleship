@@ -46,11 +46,13 @@ export default class Gameboard {
       yCord,
       direction
     );
+    // error handling
     if (returnValue == 1) {
       return 'Ship already present';
     } else if (returnValue == 0) {
       return 'Out of bounds';
     }
+    this.shipArray.push(newShip);
     for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
         this.grid[xCord + i][yCord] = newShip;
@@ -77,6 +79,15 @@ export default class Gameboard {
         return 'already missed';
       }
     }
+  }
+  allShipsSunk() {
+    let flag = true;
+    this.shipArray.forEach(function (ship) {
+      if (!ship.isSunk()) {
+        flag = false;
+      }
+    });
+    return flag
   }
 }
 

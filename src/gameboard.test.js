@@ -60,11 +60,11 @@ describe('Gameboard', () => {
   });
 
   test('allShipsSunk returns true only when all ships are sunk', () => {
-    const ship1 = Ship(1);
-    const ship2 = Ship(1);
+    const ship1 = new Ship(1);
+    const ship2 = new Ship(1);
 
-    board.placeShip(ship1, [0, 0], 'horizontal');
-    board.placeShip(ship2, [1, 0], 'horizontal');
+    board.placeShip(ship1, [0, 0], 'H');
+    board.placeShip(ship2, [1, 0], 'H');
 
     board.receiveAttack([0, 0]);
     expect(board.allShipsSunk()).toBe(false);
