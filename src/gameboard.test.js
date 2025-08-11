@@ -1,5 +1,5 @@
 // gameboard.test.js
-import Gameboard from './Gameboard'; 
+import Gameboard from './Gameboard';
 import Ship from './Ship';
 
 describe('Gameboard', () => {
@@ -17,6 +17,23 @@ describe('Gameboard', () => {
     expect(board.grid[0][0]).toBe(ship);
     expect(board.grid[0][1]).toBe(ship);
     expect(board.grid[0][2]).toBe(ship);
+  });
+
+  test('throws an error if a ship is already placed there and exits the function', () => {
+    const ship1 = new Ship(3); // length 3
+    const ship2 = new Ship(3); // length 3
+    board.placeShip(ship1, [0, 0], 'H');
+    const expected = board.placeShip(ship2, [0,0 ], 'V');
+    // console.log(expected)
+    // The ship should occupy (0,0), (0,1), (0,2)
+    expect(expected).toEqual('Ship already present');
+  });
+  test('throws an error if a ship is out of bounds', () => {
+    const ship1 = new Ship(3); // length 3
+    const expected = board.placeShip(ship1, [9,0 ], 'V');
+    // console.log(expected)
+    // The ship should occupy (0,0), (0,1), (0,2)
+    expect(expected).toEqual('Out of bounds');
   });
 
   test('receiveAttack registers a hit on the correct ship', () => {

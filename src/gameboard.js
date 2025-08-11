@@ -15,7 +15,13 @@ export default class Gameboard {
     }
   }
   compareShipStates(ship, xCord, yCord, direction) {
-    let shipObj; 
+    let shipObj;
+    if (direction == 'V' && ship.length + xCord > this.grid.length) {
+      return 0;
+    } else if (direction == 'H' && ship.length + yCord > this.grid.length) {
+      return 0;
+    }
+
     for (let i = 0; i < ship.length; i++) {
       if (direction == 'V') {
         shipObj = this.grid[xCord + i][yCord];
@@ -23,20 +29,32 @@ export default class Gameboard {
         shipObj = this.grid[xCord][yCord + i];
       }
 
-      if (!shipObj === 0) {
-        throw console.error('ship already placed');
+      if (shipObj !== 0) {
+        // throw new Error("Ship is aleady placed at that coordinate")
+        return 1;
       }
     }
+    return;
   }
   placeShip(newShip, coord, direction = 'V') {
     // first check if all the blocks are empty
     const [xCord, yCord] = coord;
-    this.compareShipStates(newShip, xCord, yCord, direction);
+    const returnValue = this.compareShipStates(
+      newShip,
+      xCord,
+      yCord,
+      direction
+    );
+    if (returnValue == 1) {
+      return 'Ship already present';
+    } else if (returnValue == 0) {
+      return 'Out of bounds';
+    }
     for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
         this.grid[xCord + i][yCord] = newShip;
       } else {
-        this.grid[xCord][yCord+i] = newShip;
+        this.grid[xCord][yCord + i] = newShip;
       }
     }
   }
