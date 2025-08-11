@@ -1,9 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@100..900&display=swap');
 :root {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: rgb(0, 0, 0);
+  --blue: rgb(0, 16, 39);
+  --blue-light: rgb(63, 198, 251);
+  --cyan: cyan;
 }
-* {
-  color: rgb(207, 207, 207);
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--blue);
+  color: var(--cyan);
+}
+h2 {
+  font-family: 'Michroma';
+  font-size: 2rem;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+button {
+  cursor: pointer;
+  padding: 12px 22px;
+  outline: none;
+  border: 2px solid rgb(5, 255, 230);
+  background-color: var(--blue-light);
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  /* box-shadow: 2px 2px 10px 2px rgb(2, 217, 245); */
+  font-weight: 800;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+button:active{
+  background-color: var(--blue);
+  color: var(--cyan);
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 99%;
 }

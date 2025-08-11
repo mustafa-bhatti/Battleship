@@ -1,5 +1,5 @@
 // import { gameboard } from './Gameboard';
-// import './styles.css';
+import './styles.css';
 
 // let list = [
 //   [1, 2],
