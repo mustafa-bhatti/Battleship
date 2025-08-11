@@ -4,6 +4,7 @@ export default class Gameboard {
     this.numOfShipsSunk = 0;
     this.grid = [];
     this.initializeGrid();
+    this.missedAttacks = [];
   }
   initializeGrid() {
     for (let x = 0; x < 10; x++) {
@@ -55,6 +56,25 @@ export default class Gameboard {
         this.grid[xCord + i][yCord] = newShip;
       } else {
         this.grid[xCord][yCord + i] = newShip;
+      }
+    }
+  }
+  receiveAttack(coord) {
+    const [xCord, yCord] = coord;
+    if (this.grid[xCord][yCord] !== 0) {
+      // box is not empty
+      let shipToHit = this.grid[xCord][yCord];
+      shipToHit.hit();
+    } else {
+      // box === 0
+      let checkMissingIndex = this.missedAttacks.findIndex(
+        (item) => item[0] == xCord && item[1] == yCord
+      );
+      if (checkMissingIndex == -1) {
+        console.log('checking : ', coord);
+        this.missedAttacks.push(coord);
+      } else {
+        return 'already missed';
       }
     }
   }
