@@ -6,12 +6,15 @@
   --blue: rgb(0, 16, 39);
   --blue-light: rgb(63, 198, 251);
   --cyan: cyan;
+  --blue-dark : rgb(33, 111, 207);
+
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--blue);
   color: var(--cyan);
+
 }
 h2 {
   font-family: 'Michroma';
@@ -23,6 +26,9 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  /* padding-bottom: 20px;
+  border: 2px solid var(--cyan); */
+
 }
 button {
   cursor: pointer;
@@ -49,4 +55,28 @@ footer {
   bottom: 0;
   text-align: center;
   width: 99%;
+
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(11,1fr);
+  grid-template-rows: repeat(11,1fr);
+  /* outline: 1px solid white; */
+  width: 380px;
+  height: 400px;
+  min-width: 350px;
+} 
+.box {
+  background-color: var(--cyan);
+  border: 1px solid var(--blue-dark);
+  cursor: pointer;
+  /* width: 20px;
+  height: 20px; */
+}
+.empty { 
+  background: transparent;
+  border: none;
+}
+.label {
+  color: white;
 }

@@ -37,9 +37,9 @@ export default class Gameboard {
     }
     return;
   }
-  placeShip(newShip, coord, direction = 'V') {
+  placeShip(newShip, position, direction = 'V') {
     // first check if all the blocks are empty
-    const [xCord, yCord] = coord;
+    const [xCord, yCord] = position;
     const returnValue = this.compareShipStates(
       newShip,
       xCord,
@@ -61,8 +61,8 @@ export default class Gameboard {
       }
     }
   }
-  receiveAttack(coord) {
-    const [xCord, yCord] = coord;
+  receiveAttack(position) {
+    const [xCord, yCord] = position;
     if (this.grid[xCord][yCord] !== 0) {
       // box is not empty
       let shipToHit = this.grid[xCord][yCord];
@@ -73,8 +73,8 @@ export default class Gameboard {
         (item) => item[0] == xCord && item[1] == yCord
       );
       if (checkMissingIndex == -1) {
-        console.log('checking : ', coord);
-        this.missedAttacks.push(coord);
+        console.log('checking : ', position);
+        this.missedAttacks.push(position);
       } else {
         return 'already missed';
       }
