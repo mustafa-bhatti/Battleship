@@ -6,21 +6,28 @@
   --blue: rgb(0, 16, 39);
   --blue-light: rgb(63, 198, 251);
   --cyan: cyan;
-  --blue-dark : rgb(33, 111, 207);
+  --blue-dark: rgb(33, 111, 207);
+  height: 100vh;
+
 
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: var(--blue);
   color: var(--cyan);
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 h2 {
   font-family: 'Michroma';
   font-size: 2rem;
 }
 .main-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +35,10 @@ h2 {
   gap: 10px;
   /* padding-bottom: 20px;
   border: 2px solid var(--cyan); */
-
+}
+.board-container {
+  display: flex;
+  gap: 30px;
 }
 button {
   cursor: pointer;
@@ -46,26 +56,23 @@ button {
   -o-border-radius: 10px;
   border-radius: 10px;
 }
-button:active{
+button:active {
   background-color: var(--blue);
   color: var(--cyan);
 }
 footer {
-  position: absolute;
-  bottom: 0;
   text-align: center;
-  width: 99%;
-
 }
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(11,1fr);
-  grid-template-rows: repeat(11,1fr);
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
   /* outline: 1px solid white; */
   width: 380px;
   height: 400px;
   min-width: 350px;
-} 
+}
 .box {
   background-color: var(--cyan);
   border: 1px solid var(--blue-dark);
@@ -73,7 +80,7 @@ footer {
   /* width: 20px;
   height: 20px; */
 }
-.empty { 
+.empty {
   background: transparent;
   border: none;
 }
