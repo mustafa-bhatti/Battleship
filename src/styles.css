@@ -25,6 +25,7 @@ body {
 h2 {
   font-family: 'Michroma';
   font-size: 2rem;
+  text-align: center;
 }
 .main-container {
   flex: 1;

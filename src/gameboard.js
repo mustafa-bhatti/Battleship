@@ -15,19 +15,22 @@ export default class Gameboard {
       this.grid.push(temp);
     }
   }
-  compareShipStates(ship, xCord, yCord, direction) {
+  compareShipStates(ship, xPos, yPos, direction) {
+    // -1 == Succesfull
+    // 0  == if ship is out of bounds
+    // 1 == there is alreaedy a ship present
     let shipObj;
-    if (direction == 'V' && ship.length + xCord > this.grid.length) {
+    if (direction == 'V' && ship.length + xPos > this.grid.length) {
       return 0;
-    } else if (direction == 'H' && ship.length + yCord > this.grid.length) {
+    } else if (direction == 'H' && ship.length + yPos > this.grid.length) {
       return 0;
     }
 
     for (let i = 0; i < ship.length; i++) {
       if (direction == 'V') {
-        shipObj = this.grid[xCord + i][yCord];
+        shipObj = this.grid[xPos + i][yPos];
       } else {
-        shipObj = this.grid[xCord][yCord + i];
+        shipObj = this.grid[xPos][yPos + i];
       }
 
       if (shipObj !== 0) {
@@ -35,31 +38,25 @@ export default class Gameboard {
         return 1;
       }
     }
-    return;
+    return -1;
   }
-  placeShip(newShip, position, direction = 'V') {
+  placeShip(newShip, xPos, yPos, direction) {
     // first check if all the blocks are empty
-    const [xCord, yCord] = position;
-    const returnValue = this.compareShipStates(
-      newShip,
-      xCord,
-      yCord,
-      direction
-    );
-    // error handling
-    if (returnValue == 1) {
-      return 'Ship already present';
-    } else if (returnValue == 0) {
-      return 'Out of bounds';
+    const returnValue = this.compareShipStates(newShip, xPos, yPos, direction);
+
+    if (returnValue != -1) {
+      return returnValue;
     }
     this.shipArray.push(newShip);
     for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
-        this.grid[xCord + i][yCord] = newShip;
+        this.grid[xPos + i][yPos] = newShip;
       } else {
-        this.grid[xCord][yCord + i] = newShip;
+        this.grid[xPos][yPos + i] = newShip;
       }
+      // succesfull placement
     }
+    return returnValue;
   }
   receiveAttack(position) {
     const [xCord, yCord] = position;
@@ -87,7 +84,7 @@ export default class Gameboard {
         flag = false;
       }
     });
-    return flag
+    return flag;
   }
 }
 
