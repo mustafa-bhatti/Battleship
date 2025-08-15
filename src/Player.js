@@ -1,4 +1,4 @@
-import Gameboard from "./gameboard";
+import { Gameboard } from './Gameboard';
 
 export default class Player {
   constructor(name, type) {
@@ -7,4 +7,3 @@ export default class Player {
     this.board = new Gameboard();
   }
 }
-            
