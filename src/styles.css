@@ -8,8 +8,6 @@
   --cyan: cyan;
   --blue-dark: rgb(33, 111, 207);
   height: 100vh;
-
-
 }
 
 body {
@@ -87,4 +85,7 @@ footer {
 }
 .label {
   color: white;
+}
+.ship-box { 
+  background-color: black;
 }

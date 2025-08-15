@@ -1,9 +1,9 @@
-export default  class Ship {
-  constructor(length,direction) {
+export default class Ship {
+  constructor(length, direction) {
     this.length = length;
     this.hitTimes = 0;
     this.sunk = false;
-    this.direction = direction
+    this.direction = direction;
   }
   hit() {
     this.hitTimes += 1;

@@ -1,4 +1,4 @@
-export default class Gameboard {
+export class Gameboard {
   constructor() {
     this.shipArray = [];
     this.numOfShipsSunk = 0;
@@ -40,21 +40,23 @@ export default class Gameboard {
     }
     return -1;
   }
-  placeShip(newShip, xPos, yPos, direction) {
+  placeShip(newShip, xPos, yPos) {
+    const direction = newShip.direction;
     // first check if all the blocks are empty
     const returnValue = this.compareShipStates(newShip, xPos, yPos, direction);
 
     if (returnValue != -1) {
       return returnValue;
     }
-    this.shipArray.push(newShip);
-    for (let i = 0; i < newShip.length; i++) {
+    this.shipArray.push({ newShip, xPos, yPos });
+      for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
         this.grid[xPos + i][yPos] = newShip;
       } else {
         this.grid[xPos][yPos + i] = newShip;
       }
-      // succesfull placement
+
+      // succesfull placementsss
     }
     return returnValue;
   }
@@ -80,7 +82,8 @@ export default class Gameboard {
   allShipsSunk() {
     let flag = true;
     this.shipArray.forEach(function (ship) {
-      if (!ship.isSunk()) {
+      console.log('check', ship[newShip]);
+      if (!ship(newShip).isSunk()) {
         flag = false;
       }
     });
