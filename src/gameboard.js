@@ -48,7 +48,7 @@ export class Gameboard {
     if (returnValue != -1) {
       return returnValue;
     }
-    this.shipArray.push({ newShip, xPos, yPos });
+    this.shipArray.push({ newShip, xPos, yPos,direction });
       for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
         this.grid[xPos + i][yPos] = newShip;

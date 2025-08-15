@@ -74,7 +74,8 @@ footer {
 }
 .box {
   background-color: var(--cyan);
-  border: 1px solid var(--blue-dark);
+  /* border: 1px solid var(--blue-dark); */
+  outline: 1px solid var(--blue-dark);
   cursor: pointer;
   /* width: 20px;
   height: 20px; */
@@ -86,6 +87,7 @@ footer {
 .label {
   color: white;
 }
-.ship-box { 
-  background-color: black;
+.ship-box {
+  background-color: var(--blue-dark);
+  /* outline: 1px solid white; */
 }
