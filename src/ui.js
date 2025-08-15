@@ -17,13 +17,13 @@ export const createGrid = function () {
       newDiv.className = 'empty';
     } else if (x == 0 && y > 0) {
       newDiv.className = 'label';
-      newDiv.textContent = y;
+      newDiv.textContent = y-1;
     } else if (x > 0 && y == 0) {
       newDiv.className = 'label';
       newDiv.textContent = letters[x - 1];
     } else {
       newDiv.className = 'box';
-      newDiv.dataset.position = [x, y];
+      newDiv.dataset["pos"] = [x-1,y-1]
     }
     return newDiv;
   }
