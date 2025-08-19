@@ -27,6 +27,9 @@ const fillBoard = function (player) {
   }
 };
 
+
+
+
 fillBoard(humanPlayer);
 fillBoard(computerPlayer);
 console.log(humanPlayer.board.grid);

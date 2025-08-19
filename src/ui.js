@@ -24,6 +24,7 @@ export const createGrid = function () {
     } else {
       newDiv.className = 'box';
       newDiv.dataset["pos"] = [x-1,y-1]
+
     }
     return newDiv;
   }

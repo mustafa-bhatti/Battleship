@@ -12,7 +12,6 @@ function renderBoxes(player, boardDiv) {
     let yPos = shipToRender.yPos;
     let xPos = shipToRender.xPos;
     let direction = shipToRender.direction;
-    console.log(shipToRender);
     for (let j = 0; j < len; j++) {
       if (direction === "V") {
         const box1 = boardDiv.querySelector(`[data-pos = "${xPos + j},${yPos}"]`);

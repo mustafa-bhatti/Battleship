@@ -67,27 +67,29 @@ footer {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(11, 1fr);
-  /* outline: 1px solid white; */
-  width: 380px;
-  height: 400px;
-  min-width: 350px;
+  width: 500px;
+  height: 460px;
+  min-width: 470px;
+  gap: 2px;
+  background-color: var(--blue);
+
 }
 .box {
   background-color: var(--cyan);
-  /* border: 1px solid var(--blue-dark); */
-  outline: 1px solid var(--blue-dark);
   cursor: pointer;
-  /* width: 20px;
-  height: 20px; */
-}
-.empty {
-  background: transparent;
-  border: none;
-}
-.label {
-  color: white;
 }
 .ship-box {
   background-color: var(--blue-dark);
-  /* outline: 1px solid white; */
+
+}
+.hit { 
+  background-color: greenyellow;
+}
+.miss { 
+  background-color: white;
+}
+
+.label {
+  color: white;
+  background-color: var(--blue);
 }
