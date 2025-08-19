@@ -62,9 +62,10 @@ export class Gameboard {
   }
   receiveAttack(position) {
     const [xCord, yCord] = position;
-    if (this.grid[xCord][yCord] !== 0) {
+    if (this.grid[xCord][yCord] != 0) {
       // box is not empty
       let shipToHit = this.grid[xCord][yCord];
+      console.log("HITTTT");
       shipToHit.hit();
     } else {
       // box === 0
@@ -74,8 +75,9 @@ export class Gameboard {
       if (checkMissingIndex == -1) {
         console.log('checking : ', position);
         this.missedAttacks.push(position);
+        console.log("missed attacks",this.missedAttacks);
       } else {
-        return 'already missed';
+        console.log('already missed');
       }
     }
   }

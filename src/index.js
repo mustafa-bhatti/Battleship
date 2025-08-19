@@ -32,8 +32,8 @@ const fillBoard = function (player) {
 
 fillBoard(humanPlayer);
 fillBoard(computerPlayer);
-console.log(humanPlayer.board.grid);
-console.log("computer: ",computerPlayer.board.grid);
+// console.log(humanPlayer.board.grid);
+// console.log("computer: ",computerPlayer.board.grid);
 
 renderBoard(humanPlayer,computerPlayer)
 
