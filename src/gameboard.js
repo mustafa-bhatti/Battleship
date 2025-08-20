@@ -75,17 +75,16 @@ export class Gameboard {
       let checkHitIndex = this.hitAttacks.findIndex(
         (item) => item[0] == xCord && item[1] == yCord
       );
-      console.log("hit index ",checkHitIndex);
-      if (checkHitIndex == -1){
-      let shipToHit = this.grid[xCord][yCord];
-      console.log('HITTTT');
-      shipToHit.hit();
-      this.hitAttacks.push(position)
-      return 1;
-      }
-      else if (checkHitIndex != -1){
-        console.log("already Hit")
-        return -1
+      console.log('hit index ', checkHitIndex);
+      if (checkHitIndex == -1) {
+        let shipToHit = this.grid[xCord][yCord];
+        console.log('HITTTT');
+        shipToHit.hit();
+        this.hitAttacks.push(position);
+        return 1;
+      } else if (checkHitIndex != -1) {
+        console.log('already Hit');
+        return -1;
       }
     } else {
       // box === 0
@@ -104,10 +103,13 @@ export class Gameboard {
   }
   allShipsSunk() {
     let flag = true;
-    this.shipArray.forEach(function (ship) {
-      console.log('check', ship[newShip]);
-      if (!ship(newShip).isSunk()) {
+    console.log(this.numOfShipsSunk)
+    this.shipArray.forEach((ship) =>{
+      // console.log('check', ship.newShip);   
+      if (!ship.newShip.isSunk()) {
         flag = false;
+      } else {
+        this.numOfShipsSunk +=1;
       }
     });
     return flag;

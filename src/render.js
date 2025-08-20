@@ -1,7 +1,7 @@
 export const renderBoard = function (humanPlayer, computerPlayer) {
   const humanBoardDiv = document.querySelector('.player-board');
-  // const computerBoardDiv = document.querySelector('.computer-board');
   renderBoxes(humanPlayer, humanBoardDiv);
+  // const computerBoardDiv = document.querySelector('.computer-board');
   // renderBoxes(computerPlayer, computerBoardDiv);
 };
 function renderBoxes(player, boardDiv) {

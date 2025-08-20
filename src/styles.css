@@ -91,3 +91,6 @@ footer {
   color: white;
   background-color: var(--blue);
 }
+.gameOver { 
+  visibility: visible;
+}
