@@ -1,4 +1,5 @@
-import { humanPlayer, computerPlayer } from '.';
+import { humanPlayer, computerPlayer} from '.';
+let turn = 1;
 export const createGrid = function () {
   const playerBoard = document.querySelector('.player-board');
   const computerBoard = document.querySelector('.computer-board');
@@ -13,6 +14,8 @@ export const createGrid = function () {
   }
 
   function createChild(x, y, typePlayer) {
+    // turn 1 = human
+    // turn 0 = computer
     const newDiv = document.createElement('div');
     if (x == 0 && y == 0) {
       newDiv.className = 'empty';
@@ -25,21 +28,23 @@ export const createGrid = function () {
     } else {
       newDiv.className = 'box';
       newDiv.dataset['pos'] = [x - 1, y - 1];
-
       const callAttackMethods = (e) => {
         const div = e.target;
         const pos = e.target.dataset['pos'].split(',').map(Number);
         let attackFlag;
         if (typePlayer == 'human') {
+          if (turn ==1){
           attackFlag = humanPlayer.board.receiveAttack(pos);
+          turn = 0}
         } else {
+          if (turn ==0){
           attackFlag = computerPlayer.board.receiveAttack(pos);
+          turn = 1}
         }
         if (attackFlag == 1) {
           div.classList.add('hit');
-        }
-        else if (attackFlag == -1) {
-          div.classList.add("miss");
+        } else if (attackFlag == -1) {
+          div.classList.add('miss');
         }
       };
       newDiv.addEventListener('click', callAttackMethods, { once: true });
