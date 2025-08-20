@@ -95,10 +95,10 @@ export class Gameboard {
       if (checkMissingIndex == -1) {
         this.missedAttacks.push(position);
         console.log('missed attacks', this.missedAttacks);
-        return -1;
+        return 0;
       } else {
         console.log('already missed');
-        return 0;
+        return -1;
       }
     }
   }

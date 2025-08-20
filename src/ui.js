@@ -15,13 +15,14 @@ export const createGrid = function () {
   }
   function computeMove(board) {
     let loopflag = true;
-    while (loopflag) {}
-    const xPos = Math.floor(Math.random() * 10);
-    const yPos = Math.floor(Math.random() * 10);
-    const returnRecieveValue = board.receiveAttack([xPos, yPos]);
-    if (returnRecieveValue >= 0) {
-      loopflag = false;
-      return returnRecieveValue;
+    while (loopflag) {
+      const xPos = Math.floor(Math.random() * 10);
+      const yPos = Math.floor(Math.random() * 10);
+      const returnRecieveValue = board.receiveAttack([xPos, yPos]);
+      console.log(returnRecieveValue);
+      if (returnRecieveValue >= 0) {
+        loopflag = false;
+      }
     }
   }
   function createChild(x, y, typePlayer) {
@@ -43,10 +44,13 @@ export const createGrid = function () {
       const callAttackMethods = (e) => {
         const pos = e.target.dataset['pos'].split(',').map(Number);
         if (typePlayer == 'computer') {
-          computerPlayer.board.receiveAttack(pos);
+          const attackflag = computerPlayer.board.receiveAttack(pos);
+          if (attackflag >= 0 ) {
+          computeMove(humanPlayer.board);
+          }
         }
         renderAttacks(humanPlayer, playerBoard);
-        renderAttacks(computerPlayer,computerBoard)
+        renderAttacks(computerPlayer, computerBoard);
       };
       newDiv.addEventListener('click', callAttackMethods, { once: true });
     }
