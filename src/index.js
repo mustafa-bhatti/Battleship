@@ -4,10 +4,6 @@ import './styles.css';
 import { createGrid } from './ui';
 import { renderBoard } from './render';
 
-export const humanPlayer = new Player('mustafa', 'human');
-export const computerPlayer = new Player('ai', 'computer');
-createGrid();
-
 const fillBoard = function (player) {
   let board = player.board;
   const direction = ['V', 'H'];
@@ -27,9 +23,18 @@ const fillBoard = function (player) {
   }
 };
 
-fillBoard(humanPlayer);
-fillBoard(computerPlayer);
 // console.log(humanPlayer.board.grid);
 // console.log("computer: ",computerPlayer.board.grid);
+const playBtn = document.querySelector('#play-btn');
 
-renderBoard(humanPlayer, computerPlayer);
+let humanPlayer, computerPlayer;
+export { humanPlayer, computerPlayer };
+createGrid();
+playBtn.addEventListener('click', function () {
+  createGrid();
+  humanPlayer = new Player('mustafa', 'human');
+  computerPlayer = new Player('ai', 'computer');
+  fillBoard(humanPlayer);
+  fillBoard(computerPlayer);
+  renderBoard(humanPlayer, computerPlayer);
+});

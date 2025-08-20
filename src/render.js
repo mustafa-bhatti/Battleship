@@ -35,12 +35,12 @@ export const renderAttacks = function (player, boardDiv) {
     const xPos = missedAttacks[i][0];
     const yPos = missedAttacks[i][1];
     const box = boardDiv.querySelector(`[data-pos = "${xPos},${yPos}"]`);
-    box.classList.add("miss");
+    box.classList.add('miss');
   }
   for (let i = 0; i < hitAttacks.length; i++) {
     const xPos = hitAttacks[i][0];
     const yPos = hitAttacks[i][1];
     const box = boardDiv.querySelector(`[data-pos = "${xPos},${yPos}"]`);
-    box.classList.add("hit");
+    box.classList.add('hit');
   }
 };

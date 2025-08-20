@@ -15,6 +15,8 @@ function checkWin(humanBoard, compBoard) {
 export const createGrid = function () {
   const playerBoard = document.querySelector('.player-board');
   const computerBoard = document.querySelector('.computer-board');
+  playerBoard.innerHTML = '';
+  computerBoard.innerHTML = '';
   const letters = 'ABCDEFGHIJ';
   for (let x = 0; x < 11; x++) {
     for (let y = 0; y < 11; y++) {
@@ -64,8 +66,14 @@ export const createGrid = function () {
             const isWin = checkWin(humanPlayer.board, computerPlayer.board);
             if (gameOver) {
               const gameOverDiv = document.querySelector('.gameOver');
+              let winnerName = '';
               // console.log(gameOverDiv);
-              gameOverDiv.textContent = 'Game Over';
+              if (isWin == 1) {
+                winnerName = 'Player';
+              } else if (isWin == 0) {
+                winnerName = 'Computer';
+              }
+              gameOverDiv.textContent = 'Game Over    - ' + winnerName;
               gameOverDiv.style.visibility = 'visible';
             }
           }

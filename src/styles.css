@@ -91,6 +91,9 @@ footer {
   color: white;
   background-color: var(--blue);
 }
-.gameOver { 
+.gameOver {
+  font-size: 2em;
+  font-weight: bold;
+  color: greenyellow;
   visibility: visible;
 }
