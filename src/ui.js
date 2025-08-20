@@ -27,11 +27,19 @@ export const createGrid = function () {
       newDiv.dataset['pos'] = [x - 1, y - 1];
 
       const callAttackMethods = (e) => {
+        const div = e.target;
         const pos = e.target.dataset['pos'].split(',').map(Number);
+        let attackFlag;
         if (typePlayer == 'human') {
-          humanPlayer.board.receiveAttack(pos);
+          attackFlag = humanPlayer.board.receiveAttack(pos);
         } else {
-          computerPlayer.board.receiveAttack(pos);
+          attackFlag = computerPlayer.board.receiveAttack(pos);
+        }
+        if (attackFlag == 1) {
+          div.classList.add('hit');
+        }
+        else if (attackFlag == -1) {
+          div.classList.add("miss");
         }
       };
       newDiv.addEventListener('click', callAttackMethods, { once: true });
