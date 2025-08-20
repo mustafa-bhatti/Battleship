@@ -1,7 +1,6 @@
 export const renderBoard = function (humanPlayer, computerPlayer) {
   const humanBoardDiv = document.querySelector('.player-board');
   const computerBoardDiv = document.querySelector('.computer-board');
-
   renderBoxes(humanPlayer, humanBoardDiv);
   renderBoxes(computerPlayer, computerBoardDiv);
 };
@@ -28,3 +27,20 @@ function renderBoxes(player, boardDiv) {
     // console.log(len, xPos, yPos);
   }
 }
+
+export const renderAttacks = function (player, boardDiv) {
+  const missedAttacks = player.board.missedAttacks;
+  const hitAttacks = player.board.hitAttacks;
+  for (let i = 0; i < missedAttacks.length; i++) {
+    const xPos = missedAttacks[i][0];
+    const yPos = missedAttacks[i][1];
+    const box = boardDiv.querySelector(`[data-pos = "${xPos},${yPos}"]`);
+    box.classList.add("miss");
+  }
+  for (let i = 0; i < hitAttacks.length; i++) {
+    const xPos = hitAttacks[i][0];
+    const yPos = hitAttacks[i][1];
+    const box = boardDiv.querySelector(`[data-pos = "${xPos},${yPos}"]`);
+    box.classList.add("hit");
+  }
+};

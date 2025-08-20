@@ -1,4 +1,5 @@
-import { humanPlayer, computerPlayer} from '.';
+import { humanPlayer, computerPlayer } from '.';
+import { renderAttacks } from './render';
 let turn = 1;
 export const createGrid = function () {
   const playerBoard = document.querySelector('.player-board');
@@ -12,7 +13,17 @@ export const createGrid = function () {
       playerBoard.appendChild(playerDiv);
     }
   }
-
+  function computeMove(board) {
+    let loopflag = true;
+    while (loopflag) {}
+    const xPos = Math.floor(Math.random() * 10);
+    const yPos = Math.floor(Math.random() * 10);
+    const returnRecieveValue = board.receiveAttack([xPos, yPos]);
+    if (returnRecieveValue >= 0) {
+      loopflag = false;
+      return returnRecieveValue;
+    }
+  }
   function createChild(x, y, typePlayer) {
     // turn 1 = human
     // turn 0 = computer
@@ -28,24 +39,14 @@ export const createGrid = function () {
     } else {
       newDiv.className = 'box';
       newDiv.dataset['pos'] = [x - 1, y - 1];
+
       const callAttackMethods = (e) => {
-        const div = e.target;
         const pos = e.target.dataset['pos'].split(',').map(Number);
-        let attackFlag;
-        if (typePlayer == 'human') {
-          if (turn ==1){
-          attackFlag = humanPlayer.board.receiveAttack(pos);
-          turn = 0}
-        } else {
-          if (turn ==0){
-          attackFlag = computerPlayer.board.receiveAttack(pos);
-          turn = 1}
+        if (typePlayer == 'computer') {
+          computerPlayer.board.receiveAttack(pos);
         }
-        if (attackFlag == 1) {
-          div.classList.add('hit');
-        } else if (attackFlag == -1) {
-          div.classList.add('miss');
-        }
+        renderAttacks(humanPlayer, playerBoard);
+        renderAttacks(computerPlayer,computerBoard)
       };
       newDiv.addEventListener('click', callAttackMethods, { once: true });
     }

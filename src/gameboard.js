@@ -2,6 +2,7 @@ export class Gameboard {
   constructor() {
     this.shipArray = [];
     this.numOfShipsSunk = 0;
+    this.hitAttacks = [];
     this.grid = [];
     this.initializeGrid();
     this.missedAttacks = [];
@@ -64,16 +65,28 @@ export class Gameboard {
    *@returnValues
     1 = hit Successfull
     0 = added to missed attacks
-    -1 = already in missed attacks. invalid move
+    -1 = already in missed attacks or hit. invalid move
+    
   */
   receiveAttack(position) {
     const [xCord, yCord] = position;
     if (this.grid[xCord][yCord] != 0) {
       // box is not empty
+      let checkHitIndex = this.hitAttacks.findIndex(
+        (item) => item[0] == xCord && item[1] == yCord
+      );
+      console.log("hit index ",checkHitIndex);
+      if (checkHitIndex == -1){
       let shipToHit = this.grid[xCord][yCord];
       console.log('HITTTT');
       shipToHit.hit();
+      this.hitAttacks.push(position)
       return 1;
+      }
+      else if (checkHitIndex != -1){
+        console.log("already Hit")
+        return -1
+      }
     } else {
       // box === 0
       let checkMissingIndex = this.missedAttacks.findIndex(
