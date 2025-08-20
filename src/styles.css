@@ -72,7 +72,6 @@ footer {
   min-width: 470px;
   gap: 2px;
   background-color: var(--blue);
-
 }
 .box {
   background-color: var(--cyan);
@@ -80,12 +79,11 @@ footer {
 }
 .ship-box {
   background-color: var(--blue-dark);
-
 }
-.hit { 
+.hit {
   background-color: greenyellow;
 }
-.miss { 
+.miss {
   background-color: white;
 }
 

@@ -48,8 +48,8 @@ export class Gameboard {
     if (returnValue != -1) {
       return returnValue;
     }
-    this.shipArray.push({ newShip, xPos, yPos,direction });
-      for (let i = 0; i < newShip.length; i++) {
+    this.shipArray.push({ newShip, xPos, yPos, direction });
+    for (let i = 0; i < newShip.length; i++) {
       if (direction == 'V') {
         this.grid[xPos + i][yPos] = newShip;
       } else {
@@ -60,24 +60,32 @@ export class Gameboard {
     }
     return returnValue;
   }
+  /** 
+   *@returnValues
+    1 = hit Successfull
+    0 = added to missed attacks
+    -1 = already in missed attacks. invalid move
+  */
   receiveAttack(position) {
     const [xCord, yCord] = position;
     if (this.grid[xCord][yCord] != 0) {
       // box is not empty
       let shipToHit = this.grid[xCord][yCord];
-      console.log("HITTTT");
+      console.log('HITTTT');
       shipToHit.hit();
+      return 1;
     } else {
       // box === 0
       let checkMissingIndex = this.missedAttacks.findIndex(
         (item) => item[0] == xCord && item[1] == yCord
       );
       if (checkMissingIndex == -1) {
-        console.log('checking : ', position);
         this.missedAttacks.push(position);
-        console.log("missed attacks",this.missedAttacks);
+        console.log('missed attacks', this.missedAttacks);
+        return -1;
       } else {
         console.log('already missed');
+        return 0;
       }
     }
   }

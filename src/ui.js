@@ -26,12 +26,15 @@ export const createGrid = function () {
       newDiv.className = 'box';
       newDiv.dataset['pos'] = [x - 1, y - 1];
 
-      newDiv.addEventListener('click', (e) => {
-        const  pos = e.target.dataset['pos'].split(",").map(Number);
+      const callAttackMethods = (e) => {
+        const pos = e.target.dataset['pos'].split(',').map(Number);
         if (typePlayer == 'human') {
           humanPlayer.board.receiveAttack(pos);
+        } else {
+          computerPlayer.board.receiveAttack(pos);
         }
-      });
+      };
+      newDiv.addEventListener('click', callAttackMethods, { once: true });
     }
     return newDiv;
   }

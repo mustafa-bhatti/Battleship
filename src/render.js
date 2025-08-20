@@ -13,16 +13,18 @@ function renderBoxes(player, boardDiv) {
     let xPos = shipToRender.xPos;
     let direction = shipToRender.direction;
     for (let j = 0; j < len; j++) {
-      if (direction === "V") {
-        const box1 = boardDiv.querySelector(`[data-pos = "${xPos + j},${yPos}"]`);
-        box1.classList.add("ship-box");
-      }
-      else if (direction === "H") {
-        const box1 = boardDiv.querySelector(`[data-pos = "${xPos},${yPos + j}"]`);
-        box1.classList.add("ship-box");
+      if (direction === 'V') {
+        const box1 = boardDiv.querySelector(
+          `[data-pos = "${xPos + j},${yPos}"]`
+        );
+        box1.classList.add('ship-box');
+      } else if (direction === 'H') {
+        const box1 = boardDiv.querySelector(
+          `[data-pos = "${xPos},${yPos + j}"]`
+        );
+        box1.classList.add('ship-box');
       }
     }
     // console.log(len, xPos, yPos);
   }
 }
-
