@@ -91,7 +91,7 @@ footer {
   color: white;
   background-color: var(--blue);
 }
-.remaining-ships{
+.remaining-ships {
   text-align: center;
   margin-top: 0;
   visibility: hidden;

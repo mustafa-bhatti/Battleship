@@ -110,7 +110,6 @@ export class Gameboard {
       if (!ship.newShip.isSunk()) {
         flag = false;
       } else {
-
         this.numOfShipsSunk += 1;
       }
     });
