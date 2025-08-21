@@ -94,6 +94,7 @@ footer {
 .remaining-ships{
   text-align: center;
   margin-top: 0;
+  visibility: hidden;
 }
 .gameOver {
   font-size: 2em;

@@ -65,9 +65,9 @@ export const createGrid = function () {
             if (attackflag >= 0) {
               computeMove(humanPlayer.board);
             }
+            renderRemainingShips(humanPlayer, computerPlayer);
             renderAttacks(humanPlayer, playerBoard);
             renderAttacks(computerPlayer, computerBoard);
-            renderRemainingShips(humanPlayer,computerPlayer)
             const isWin = checkWin(humanPlayer.board, computerPlayer.board);
             if (gameOver) {
               const gameOverDiv = document.querySelector('.gameOver');
@@ -80,6 +80,7 @@ export const createGrid = function () {
               }
               gameOverDiv.textContent = 'Game Over    - ' + winnerName;
               gameOverDiv.style.visibility = 'visible';
+            } else {
             }
           }
         }

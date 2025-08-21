@@ -31,6 +31,14 @@ let humanPlayer, computerPlayer;
 export { humanPlayer, computerPlayer };
 createGrid();
 playBtn.addEventListener('click', function () {
+  const gameOverDiv = document.querySelector('.gameOver');
+  const remainingShipsDiv = document.querySelectorAll(".remaining-ships");
+  gameOverDiv.style.visibility = 'hidden';
+  remainingShipsDiv.forEach(Element => Element.style.visibility = "visible")
+  const player1span = document.querySelector('#player-ships');
+  const player2span = document.querySelector('#computer-ships');
+  player1span.textContent = '';
+  player2span.textContent = '';
   createGrid();
   setGameOver(false);
   humanPlayer = new Player('mustafa', 'human');
