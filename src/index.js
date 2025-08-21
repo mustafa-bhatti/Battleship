@@ -32,7 +32,6 @@ export { humanPlayer, computerPlayer };
 createGrid();
 playBtn.addEventListener('click', function () {
   createGrid();
-  console.log(gameOver);
   setGameOver(false);
   humanPlayer = new Player('mustafa', 'human');
   computerPlayer = new Player('ai', 'computer');

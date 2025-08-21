@@ -1,5 +1,5 @@
+const humanBoardDiv = document.querySelector('.player-board');
 export const renderBoard = function (humanPlayer, computerPlayer) {
-  const humanBoardDiv = document.querySelector('.player-board');
   renderBoxes(humanPlayer, humanBoardDiv);
   // const computerBoardDiv = document.querySelector('.computer-board');
   // renderBoxes(computerPlayer, computerBoardDiv);
@@ -43,4 +43,15 @@ export const renderAttacks = function (player, boardDiv) {
     const box = boardDiv.querySelector(`[data-pos = "${xPos},${yPos}"]`);
     box.classList.add('hit');
   }
+};
+
+export const renderRemainingShips = function (player1,player2 ) {
+  const remainingShipsPlayer1 = 4 - player1.board.numOfShipsSunk;
+  const remainingShipsPlayer2 = 4 - player2.board.numOfShipsSunk;
+  
+  const player1span  = document.querySelector("#player-ships");
+  const player2span  = document.querySelector("#computer-ships");
+
+  player1span.textContent = remainingShipsPlayer1
+  player2span.textContent = remainingShipsPlayer2
 };

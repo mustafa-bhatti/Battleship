@@ -104,11 +104,13 @@ export class Gameboard {
   allShipsSunk() {
     let flag = true;
     console.log(this.numOfShipsSunk);
+    this.numOfShipsSunk = 0;
     this.shipArray.forEach((ship) => {
       // console.log('check', ship.newShip);
       if (!ship.newShip.isSunk()) {
         flag = false;
       } else {
+
         this.numOfShipsSunk += 1;
       }
     });

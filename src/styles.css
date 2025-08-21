@@ -91,6 +91,10 @@ footer {
   color: white;
   background-color: var(--blue);
 }
+.remaining-ships{
+  text-align: center;
+  margin-top: 0;
+}
 .gameOver {
   font-size: 2em;
   font-weight: bold;

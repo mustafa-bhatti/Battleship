@@ -1,5 +1,5 @@
 import { humanPlayer, computerPlayer } from '.';
-import { renderAttacks } from './render';
+import { renderAttacks, renderRemainingShips } from './render';
 
 export let gameOver = true;
 export function setGameOver(value) {
@@ -67,6 +67,7 @@ export const createGrid = function () {
             }
             renderAttacks(humanPlayer, playerBoard);
             renderAttacks(computerPlayer, computerBoard);
+            renderRemainingShips(humanPlayer,computerPlayer)
             const isWin = checkWin(humanPlayer.board, computerPlayer.board);
             if (gameOver) {
               const gameOverDiv = document.querySelector('.gameOver');
