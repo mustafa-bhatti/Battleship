@@ -1,6 +1,10 @@
 import { humanPlayer, computerPlayer } from '.';
 import { renderAttacks } from './render';
-let gameOver = false;
+
+export let gameOver = true;
+export function setGameOver(value) {
+  gameOver = value;
+}
 function checkWin(humanBoard, compBoard) {
   if (humanBoard.allShipsSunk()) {
     gameOver = true;
@@ -69,9 +73,9 @@ export const createGrid = function () {
               let winnerName = '';
               // console.log(gameOverDiv);
               if (isWin == 1) {
-                winnerName = 'Player';
-              } else if (isWin == 0) {
                 winnerName = 'Computer';
+              } else if (isWin == 0) {
+                winnerName = 'Player';
               }
               gameOverDiv.textContent = 'Game Over    - ' + winnerName;
               gameOverDiv.style.visibility = 'visible';

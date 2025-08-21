@@ -1,7 +1,7 @@
 import Player from './Player';
 import Ship from './ship';
 import './styles.css';
-import { createGrid } from './ui';
+import { createGrid, gameOver, setGameOver } from './ui';
 import { renderBoard } from './render';
 
 const fillBoard = function (player) {
@@ -32,6 +32,8 @@ export { humanPlayer, computerPlayer };
 createGrid();
 playBtn.addEventListener('click', function () {
   createGrid();
+  console.log(gameOver);
+  setGameOver(false);
   humanPlayer = new Player('mustafa', 'human');
   computerPlayer = new Player('ai', 'computer');
   fillBoard(humanPlayer);
